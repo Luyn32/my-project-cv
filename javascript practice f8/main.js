@@ -1,4 +1,4 @@
-var user = [
+var users = [
     {
         id: 1,
         name: "kien dam",
@@ -27,6 +27,13 @@ var comments = [
 function getComments() {
     return new Promise((resolve) => {
         setTimeout(() => resolve(comments), 1000);
+    });
+}
+function getUserById(userIds) {
+    return new Promise(function (resolve) {
+        var result = users.filter(function (user) {
+            return userIds.include(user.id);
+        });
     });
 }
 getComments().then((comments) => {
