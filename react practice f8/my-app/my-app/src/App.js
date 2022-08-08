@@ -1,18 +1,40 @@
 import { useState } from "react";
 import "./App.css";
 
-const gifts = ["cpu i9", "ram 32gb rgb", "rgb keyboard"];
-
+const courses = [
+    {
+        id: 1,
+        name: "html,css",
+    },
+    {
+        id: 2,
+        name: "javascript",
+    },
+    {
+        id: 3,
+        name: "reactjs",
+    },
+];
 function App() {
-    const [gift, setGift] = useState();
-    const randomGift = () => {
-        const index = Math.floor(Math.random() * gifts.length);
-        setGift(gifts[index]);
+    const [checked, setChecked] = useState([]);
+    console.log(checked);
+
+    const handleSubmit = () => {
+        console.log({ id: checked });
     };
     return (
-        <div className="App" style={{ padding: 32 }}>
-            <h1>{gift || "chua co phan thuong"}</h1>
-            <button onClick={randomGift}>lay thuong</button>
+        <div>
+            {courses.map((course) => (
+                <div key={course.id}>
+                    <input
+                        type="checkbox"
+                        checked={checked === course.id}
+                        onChange={() => setChecked(course.id)}
+                    ></input>
+                    {course.name}
+                </div>
+            ))}
+            <button>register</button>
         </div>
     );
 }
