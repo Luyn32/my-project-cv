@@ -11,6 +11,8 @@ html {
 #header {
     height: 46px;
     background-color: black;
+    display: flex;
+    justify-content: space-between;
 }
 #nav {
 }
@@ -57,6 +59,18 @@ html {
 .subnav li:hover {
     background-color: #ccc;
 }
+.search-header {
+    line-height: 46px;
+    padding: 0 24px;
+}
+.search-header-icon {
+    color: #fff;
+}
+.search-header:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
 #slider {
     min-height: 350px;
     background-color: #333;
