@@ -16,6 +16,7 @@ html {
 }
 #nav li {
     display: inline-block;
+    position: relative;
 }
 #nav li a {
     color: #fff;
@@ -29,9 +30,12 @@ html {
     display: inline-block;
 }
 #nav .subnav {
-    display: none;
+    /* display: none; */
+    position: absolute;
 }
 #slider {
+    min-height: 500px;
+    background-color: #333;
 }
 #content {
 }
