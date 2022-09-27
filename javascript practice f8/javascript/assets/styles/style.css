@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 body {
-    display: flex;
-    font-family: "Poppins", sans-serif;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.container {
+    background-color: #fff;
+    margin-top: 40px;
+}
+.container__search {
+    padding: 32px;
 }

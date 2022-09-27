@@ -4,79 +4,157 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-            crossorigin="anonymous"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
-        />
+        <title>MPD</title>
         <link rel="stylesheet" href="./assets/styles/style.css" />
     </head>
     <body>
-        <div>
-            <div class="tabs">
-                <div class="tab-item active">
-                    <i class="tab-icon fas fa-code"></i>
-                    React
-                </div>
-                <div class="tab-item">
-                    <i class="tab-icon fas fa-cog"></i>
-                    Angular
-                </div>
-                <div class="tab-item">
-                    <i class="tab-icon fas fa-plus-circle"></i>
-                    Ember
-                </div>
-                <div class="tab-item">
-                    <i class="tab-icon fas fa-pen-nib"></i>
-                    Vue.JS
-                </div>
-            </div>
-        </div>
+        <header class="header">
+            <h1>Single Product Description Editor</h1>
+            <p>
+                Search live products and submit requests to edit product
+                details, marketing copy, and feature bullets for your catalog
+                one product at a time.
+            </p>
+        </header>
 
-        <!-- tao content -->
-        <div class="tab-content">
-            <div class="tab-pane active">
-                <h2>React</h2>
-                <p>
-                    React makes it painless to create interactive UIs. Design
-                    simple views for each state in your application, and React
-                    will efficiently update and render just the right components
-                    when your data changes.
-                </p>
+        <div class="container">
+            <div class="container__search">
+                <input type="text" placeholder="Brand Catalog" />
+                <input type="text" placeholder="Project ID" />
+                <input type="text" placeholder="Wayfair SKUs" />
+                <input type="text" placeholder="Class" />
+                <button class="container__loader-btn">Load Products</button>
             </div>
-            <div class="tab-pane">
-                <h2>Angular</h2>
-                <p>
-                    Angular is an application design framework and development
-                    platform for creating efficient and sophisticated
-                    single-page apps.
-                </p>
+            <div class="container__filter">
+                <span>Filters</span>
+                <b>Show Empty</b>
+                <a href="">Add Filter</a>
             </div>
-            <div class="tab-pane">
-                <h2>Ember</h2>
-                <p>
-                    Ember.js is a productive, battle-tested JavaScript framework
-                    for building modern web applications. It includes everything
-                    you need to build rich UIs that work on any device.
-                </p>
+            <div class="container__page">
+                <p>1 - 1 of 1 SKUs selected</p>
+                <select>
+                    <span>Page Size</span>
+                </select>
+                <div class="change-page">
+                    <button>Previous</button>
+                    <button>1</button>
+                    <button>Next</button>
+                </div>
+                <div class="save-section">
+                    <button>Save</button><button>Save & Retranslate All</button>
+                </div>
             </div>
-            <div class="tab-pane">
-                <h2>Vue.JS</h2>
-                <p>
-                    Vue (pronounced /vjuː/, like view) is a progressive
-                    framework for building user interfaces. Unlike other
-                    monolithic frameworks, Vue is designed from the ground up to
-                    be incrementally adoptable.
-                </p>
+            <div class="container__content">
+                <div class="content-section">
+                    <div class="content__header">
+                        <a href="">EEBN3693</a>
+                        <i></i>
+                    </div>
+                    <div class="content__info">
+                        <label
+                            class="product-name"
+                            style="display: inline-block"
+                        >
+                            <div
+                                class="input-form"
+                                style="border: 1px solid #000"
+                            >
+                                <span>Product Name</span>
+                                <input
+                                    type="text"
+                                    style="border: none; outline: none"
+                                />
+                            </div>
+                            <div class="wrap-manu">
+                                <img
+                                    src="https://secure.img1-cg.wfcdn.com/im/73578561/resize-h102-w102%5Ecompr-r85/2119/211948144/Canora+Grey+2+-+Piece+Outdoor+Seat+Cushion+19%27%27+W+x+19%27%27+D.jpg"
+                                    alt=""
+                                />
+                                <div>
+                                    <p>Status: Admins Can Sell - LOSS</p>
+                                    <p>Class: Furniture Cushions(IA)</p>
+                                    <p>Brand: Canora Grey(Exclusive Brand)</p>
+                                    <p>PDP JSON Queued: No</p>
+                                </div>
+                            </div>
+                            <div class="wrap-form">
+                                <div
+                                    class="input-form"
+                                    style="border: 1px solid #000"
+                                >
+                                    <span>Display Part Number</span>
+                                    <input
+                                        type="text"
+                                        style="border: none; outline: none"
+                                    />
+                                </div>
+                                <div
+                                    class="input-form"
+                                    style="border: 1px solid #000"
+                                >
+                                    <span>Min Order Quantity</span>
+                                    <input
+                                        type="text"
+                                        style="border: none; outline: none"
+                                    />
+                                </div>
+                                <div
+                                    class="input-form"
+                                    style="border: 1px solid #000"
+                                >
+                                    <span>Force Multiple Of</span>
+                                    <input
+                                        type="text"
+                                        style="border: none; outline: none"
+                                    />
+                                </div>
+                                <div
+                                    class="input-form"
+                                    style="border: 1px solid #000"
+                                >
+                                    <span>Display Set Quantity</span>
+                                    <input
+                                        type="text"
+                                        style="border: none; outline: none"
+                                    />
+                                </div>
+                                <div
+                                    class="input-form"
+                                    style="border: 1px solid #000"
+                                >
+                                    <span>Manufacturer Min Order Qty</span>
+                                    <input
+                                        type="text"
+                                        style="border: none; outline: none"
+                                    />
+                                </div>
+                                <select name="" id=""></select>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content__header">
+                        <a href="">Product Highlights</a>
+                        <i></i>
+                    </div>
+                    <div class="product-highlights">
+                        <input type="text" />
+                        <input type="text" />
+
+                        <input type="text" />
+
+                        <input type="text" />
+                        <select name="" id=""></select>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="content__header">
+                        <a href="">Product Details</a>
+                        <i></i>
+                    </div>
+                </div>
             </div>
         </div>
-        <script src="app.js"></script>
     </body>
 </html>
