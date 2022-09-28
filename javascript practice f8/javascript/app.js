@@ -46,4 +46,30 @@ const app = {
             image: "https://a10.gaanacdn.com/gn_img/albums/YoEWlabzXB/oEWlj5gYKz/size_xxl_1586752323.webp",
         },
     ],
+    render: function () {
+        const htmls = this.songs.map((song) => {
+            return `
+                <div class="song">
+                    <div
+                        class="thumb"
+                        style="
+                            background-image: url(${song.image});
+                        "
+                    ></div>
+                    <div class="body">
+                        <h3 class="title">${song.name}</h3>
+                        <p class="author">${song.singer}</p>
+                    </div>
+                    <div class="option">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>
+            `;
+        });
+        $(".playlist").innerHTML = htmls.join("");
+    },
+    start: function () {
+        this.render();
+    },
 };
+app.start();
