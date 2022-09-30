@@ -8,10 +8,14 @@ const cdThumb = $(".cd-thumb");
 const audio = $("#audio");
 const playBtn = $(".btn-toggle-play");
 const progress = $("#progress");
+const nextBtn = $(".btn-next");
+const prevBtn = $(".btn-prev");
+const randomBtn = $(".btn-random");
 
 const app = {
     currentIndex: 0,
     isPlaying: false,
+    isRandom: false,
     songs: [
         {
             name: "Quá khứ đôi hiện tại đơn",
@@ -88,6 +92,16 @@ const app = {
     hanldeEvents: function () {
         const _this = this;
         const cdWidth = cd.offsetWidth;
+        // xy ly cd quay va dung
+        const cdThumbAnimate = cdThumb.animate(
+            [{ transform: "rotate(360deg)" }],
+            {
+                duration: 10000,
+                iteration: Infinity,
+            }
+        );
+        cdThumbAnimate.pause();
+
         //xu ly phong to thu nho
         document.onscroll = function () {
             const scrollTop =
@@ -104,16 +118,18 @@ const app = {
                 audio.play();
             }
         };
-
+        console.log(cdThumbAnimate);
         // khi bai hat duoc play
         audio.onplay = function () {
             _this.isPlaying = true;
             player.classList.add("playing");
+            cdThumbAnimate.play();
         };
         // khi bai hat bij pause
         audio.onpause = function () {
             _this.isPlaying = false;
             player.classList.remove("playing");
+            cdThumbAnimate.pause();
         };
         // khi tien do bai hat thay doi
         audio.ontimeupdate = function () {
@@ -129,11 +145,45 @@ const app = {
             const seekTime = (e.target.value / 100) * audio.duration;
             audio.currentTime = seekTime;
         };
+        //khi next
+        nextBtn.onclick = function () {
+            _this.nextSong();
+            audio.play();
+        };
+        //khi prev
+        prevBtn.onclick = function () {
+            _this.prevSong();
+            audio.play();
+        };
+        //random
+        randomBtn.onclick = function (e) {
+            _this.isRandom = !_this.isRandom;
+            randomBtn.classList.toggle("active");
+        };
     },
     loadCurrentSong: function () {
         heading.textContent = this.currentSong.name;
         cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
         audio.src = this.currentSong.path;
+    },
+    nextSong: function () {
+        this.currentIndex++;
+        if (this.currentIndex >= this.songs.length) {
+            this.currentIndex = 0;
+        }
+        this.loadCurrentSong();
+    },
+    prevSong: function () {
+        this.currentIndex--;
+        if (this.currentIndex < 0) {
+            this.currentIndex = this.songs.length - 1;
+        }
+        this.loadCurrentSong();
+    },
+    playRandomSong : function(){
+        do{
+            this.currentIndex = Math.floor(Math.random()*this.songs.length)
+        }
     },
     start: function () {
         // dinh nghia cac thuoc tinh cho object
