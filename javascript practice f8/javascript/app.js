@@ -148,12 +148,20 @@ const app = {
     };
     //khi next
     nextBtn.onclick = function () {
-      _this.nextSong();
+      if (_this.isRandom) {
+        _this.playRandomSong();
+      } else {
+        _this.nextSong();
+      }
       audio.play();
     };
     //khi prev
     prevBtn.onclick = function () {
-      _this.prevSong();
+      if (_this.isRandom) {
+        _this.playRandomSong();
+      } else {
+        _this.prevSong();
+      }
       audio.play();
     };
     //random
@@ -181,7 +189,14 @@ const app = {
     }
     this.loadCurrentSong();
   },
-
+  playRandomSong: function () {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * this.songs.length);
+    } while (newIndex == this.currentIndex);
+    this.currentIndex = newIndex;
+    this.loadCurrentSong();
+  },
   start: function () {
     // dinh nghia cac thuoc tinh cho object
     this.defineProperties();
