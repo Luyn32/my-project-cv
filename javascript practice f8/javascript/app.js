@@ -16,6 +16,7 @@ const app = {
   currentIndex: 0,
   isPlaying: false,
   isRandom: false,
+  isRepeat: false,
   songs: [
     {
       name: "lỡ say bye là bye",
@@ -55,9 +56,11 @@ const app = {
     },
   ],
   render: function () {
-    const htmls = this.songs.map((song) => {
+    const htmls = this.songs.map((song, index) => {
       return `
-                <div class="song">
+                <div class="song ${
+                  index === this.currentIndex ? "active" : ""
+                }">
                     <div
                         class="thumb"
                         style="
@@ -143,6 +146,7 @@ const app = {
         _this.nextSong();
       }
       audio.play();
+      _this.render();
     };
     //khi prev
     prevBtn.onclick = function () {
@@ -159,10 +163,17 @@ const app = {
       randomBtn.classList.toggle("active");
     };
     //repeat 1 bai
-    repeatBtn.onclick = function () {};
+    repeatBtn.onclick = function (e) {
+      _this.isRepeat = !_this.isRepeat;
+      repeatBtn.classList.toggle("active", _this.isRepeat);
+    };
     //end song
     audio.onended = function () {
-      nextBtn.click();
+      if (_this.isRepeat) {
+        audio.play();
+      } else {
+        nextBtn.click();
+      }
     };
   },
   loadCurrentSong: function () {
