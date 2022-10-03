@@ -12,6 +12,7 @@ const nextBtn = $(".btn-next");
 const prevBtn = $(".btn-prev");
 const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
+const playList = $(".playlist");
 const app = {
   currentIndex: 0,
   isPlaying: false,
@@ -60,7 +61,7 @@ const app = {
       return `
                 <div class="song ${
                   index === this.currentIndex ? "active" : ""
-                }">
+                }" data-index ="${index}">
                     <div
                         class="thumb"
                         style="
@@ -77,7 +78,7 @@ const app = {
                 </div>
             `;
     });
-    $(".playlist").innerHTML = htmls.join("");
+    playList.innerHTML = htmls.join("");
   },
   defineProperties: function () {
     Object.defineProperty(this, "currentSong", {
@@ -147,6 +148,7 @@ const app = {
       }
       audio.play();
       _this.render();
+      _this.scrollToActiveSong();
     };
     //khi prev
     prevBtn.onclick = function () {
@@ -175,6 +177,32 @@ const app = {
         nextBtn.click();
       }
     };
+    // lang nghe hanh vi click vao playlist
+    playList.onclick = function (e) {
+      const songNode = e.target.closest(".song:not(.active)");
+      if (songNode || e.target.closest(".option")) {
+        //xu ly khi click vao bai hat
+        if (songNode) {
+          _this.currentIndex = Number(songNode.dataset.index);
+          _this.loadCurrentSong();
+          _this.render();
+
+          audio.play();
+        }
+        // xu ly khi click vao option
+        if (e.target.closest("option")) {
+        }
+      }
+    };
+    //scroll to active song
+  },
+  scrollToActiveSong: function () {
+    setTimeout(() => {
+      $(".song.active").scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }, 300);
   },
   loadCurrentSong: function () {
     heading.textContent = this.currentSong.name;
