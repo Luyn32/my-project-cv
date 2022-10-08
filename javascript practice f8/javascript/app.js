@@ -122,6 +122,8 @@ const app = {
         _this.prevSong();
       }
       audio.play();
+      _this.render();
+      _this.scrollToActiveSong();
     };
     //random
     randomBtn.onclick = function (e) {
