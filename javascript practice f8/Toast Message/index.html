@@ -24,5 +24,22 @@
         <div class="toast__close"></div>
       </div>
     </div>
+    <script src="">
+      var twoSum = function (nums, target) {
+        var array = [];
+        let numsLength = nums.length;
+        for (var i = 0; i < numsLength - 1; i++) {
+          for (var j = 0; i < numsLength - 1; i++) {
+            if (i != j) {
+              if (nums[i] + nums[j] == target) {
+                array.push(i);
+                array.push(j);
+                return array;
+              }
+            }
+          }
+        }
+      };
+    </script>
   </body>
 </html>
