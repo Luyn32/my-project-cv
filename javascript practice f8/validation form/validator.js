@@ -1,6 +1,6 @@
 //ham validator
 function Validator(option) {
-  console.log(option);
+  var formElement = document.querySelector(option.form);
 }
 //dinh nghia cac rule
 Validator.isRequired = function () {};
